@@ -9,6 +9,27 @@ transportation = ["train", "bus", "plane", "boat"]
 entertainment = ["concert", "theatre", "sight seeing", "cultural sites", "historic sites"]
 
 # (5 points): As a user, I want a destination to be randomly selected for my day trip.
+session_destination = ""
+
+def random_destination():
+  random = random.randint(0, len(destinations))
+  return destinations[random]
+
+def destination_sequence():
+  session_destination = random_destination()
+  print(f"Your random destination is {session_destination}")
+  destination_confirm = input(f"Are you happy with {session_destination} as your destination or would you like to choose another destination? Y or N")
+  return destination_confirm.lower()
+
+running = True
+while running:
+  destination_confirm = destination_sequence()
+  match destination_confirm:
+    case "y":
+      destination_confirm = destination_sequence()
+    case "n":
+      session_destination = session_destination
+      break
 
 # (5 points): As a user, I want a restaurant to be randomly selected for my day trip
 
